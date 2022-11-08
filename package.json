@@ -1,0 +1,43 @@
+{
+  "name": "taily-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "config": {
+    "dist": "dist",
+    "domain": "taily-ui"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build-minify": "vite build && pnpm run html-minify",
+    "html-minify": "html-minifier --input-dir dist --output-dir dist --file-ext html --remove-comments --collapse-whitespace",
+    "deploy": "pnpm run build-minify && surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "dependencies": {
+    "eslint-plugin-react": "^7.31.10",
+    "html-minifier": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6",
+    "surge": "^0.23.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "postcss": "^8.4.18",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.2.2",
+    "vite": "^3.2.3"
+  },
+  "license": "MIT"
+}
