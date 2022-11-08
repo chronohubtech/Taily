@@ -11,11 +11,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-
     "build-minify": "vite build && pnpm run html-minify",
     "html-minify": "html-minifier --input-dir dist --output-dir dist --file-ext html --remove-comments --collapse-whitespace",
     "deploy": "pnpm run build-minify && surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh",
-
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
@@ -25,6 +23,7 @@
     "html-minifier": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "6",
     "surge": "^0.23.1"
   },
   "devDependencies": {
