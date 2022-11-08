@@ -1,4 +1,4 @@
-function App() {
+function Root() {
   return (
     <>
       <h2 className="font-bold font-sans">Taily Task</h2>
@@ -6,4 +6,4 @@ function App() {
   );
 }
 
-export default App;
+export default Root;
