@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 function Root() {
   return (
     <>
-      <h2 className="font-bold font-sans">Taily Task</h2>
+      <Link to={'create-account'}>Create account</Link>
     </>
   );
 }

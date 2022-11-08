@@ -5,10 +5,16 @@ import './global.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Routes
+import CreateAccount from '@routes/create-account/create-account.router.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />
+  },
+  {
+    path: '/create-account',
+    element: <CreateAccount />
   }
 ]);
 
