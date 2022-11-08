@@ -3,7 +3,7 @@
 }
 
 .signup__container {
-  @apply max-w-[476px] w-full block mx-auto px-4 mt-[33px];
+  @apply max-w-[476px] w-full block mx-auto px-4 mt-[33px] pb-10;
 }
 
 .signup__container > img {
