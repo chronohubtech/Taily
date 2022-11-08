@@ -16,7 +16,7 @@
     "deploy": "pnpm run build-minify && surge ./%npm_package_config_dist% --domain %npm_package_config_domain%.surge.sh",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' --config ./.prettierrc"
   },
   "dependencies": {
     "eslint-plugin-react": "^7.31.10",

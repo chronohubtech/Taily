@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        primary: "'Baloo 2', cursive"
+      },
       colors: {
         primary: '#FD9595',
         secondary: '#FFF5F4',
