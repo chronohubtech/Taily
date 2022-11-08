@@ -56,7 +56,7 @@ function CreateAccountRouter() {
               required
             />
 
-            <p className={'input-note'}>
+            <p className={'input-note mb-4'}>
               Please remember your password because we will not be able to change it due to
               encryption of your data.
             </p>
@@ -71,7 +71,9 @@ function CreateAccountRouter() {
               required
             />
 
-            <p className={'input-note'}>This is a security question for your account recovery.</p>
+            <p className={'input-note mb-4'}>
+              This is a security question for your account recovery.
+            </p>
 
             <button className={'mt-10 button__primary'}>Create an account</button>
 

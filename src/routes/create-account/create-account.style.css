@@ -1,9 +1,9 @@
 .signup__section {
-  @apply flex items-center justify-center h-screen w-full min-h-[600px];
+  @apply flex items-start justify-center h-screen w-full min-h-[600px];
 }
 
 .signup__container {
-  @apply max-w-[476px] w-full block mx-auto px-4;
+  @apply max-w-[476px] w-full block mx-auto px-4 mt-[33px];
 }
 
 .signup__container > img {
