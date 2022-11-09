@@ -7,5 +7,5 @@
 }
 
 .input__container > input {
-  @apply outline-primary rounded-[12px] px-[16px] py-[8px] block w-full font-medium text-base placeholder:text-dark-1/40;
+  @apply outline-primary rounded-[12px] px-[16px] py-[8px] block w-full font-medium text-base placeholder:text-dark-1/50;
 }
