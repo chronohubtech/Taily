@@ -29,3 +29,40 @@
 .signin__form .input-note--signin span {
   @apply text-primary;
 }
+
+.signin__checkbox {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @apply flex items-center relative cursor-pointer;
+}
+
+.signin__checkbox input {
+  @apply absolute opacity-0 cursor-pointer h-0 w-0;
+}
+
+.checkbox {
+  @apply bg-primary/20 rounded-full w-[20px] h-[20px] top-0 left-0 absolute;
+}
+
+.signin__checkbox:hover input ~ .checkbox {
+  @apply bg-primary/50;
+}
+
+.signin__checkbox input:checked ~ .checkbox {
+  @apply bg-primary;
+}
+
+.checkbox:after {
+  content: '';
+  @apply absolute hidden;
+}
+
+.signin__checkbox input:checked ~ .checkbox:after {
+  @apply block;
+}
+
+.signin__checkbox .checkbox:after {
+  @apply left-1/2 top-[49%] w-[5px] h-[10px] border-white -translate-x-1/2 -translate-y-1/2 rotate-[45deg] border-t-0 border-r-[3px] border-b-[3px] border-l-0;
+}
