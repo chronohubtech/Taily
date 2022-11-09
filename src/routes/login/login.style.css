@@ -1,0 +1,31 @@
+.signin__section {
+  @apply flex items-start justify-center h-screen w-full min-h-[600px];
+}
+
+.signin__container {
+  @apply max-w-[476px] w-full block mx-auto px-4 mt-[33px] pb-10;
+}
+
+.signin__container > img {
+  @apply mx-auto mb-[36px];
+}
+
+.signin__header {
+  @apply text-[26px] font-bold text-dark-1 mb-[12px];
+}
+
+.signin__form {
+  @apply flex flex-col gap-[12px];
+}
+
+.signin__form .input-note {
+  @apply text-xs text-dark-1/50 font-medium;
+}
+
+.signin__form .input-note--signin {
+  @apply text-sm text-dark-1 font-medium text-center;
+}
+
+.signin__form .input-note--signin span {
+  @apply text-primary;
+}
