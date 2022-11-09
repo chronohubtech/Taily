@@ -10,6 +10,6 @@
 
 @layer components {
   .button__primary {
-    @apply text-white font-semibold text-base px-[16px] py-[8px] bg-primary text-center rounded-[12px] block w-full;
+    @apply hover:brightness-95 transition-all text-white font-semibold text-base px-[16px] py-[8px] bg-primary text-center rounded-[12px] block w-full;
   }
 }
