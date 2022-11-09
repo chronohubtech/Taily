@@ -7,7 +7,7 @@ import { InputField } from '@components/input-field/input-field.component.jsx';
 import './create-account.style.css';
 import HorizontalLogo from '@assets/static/horizonal-logo.svg';
 
-function CreateAccountRoute() {
+function CreateAccountRouter() {
   const defaultSignUpField = {
     username: '',
     password: '',
@@ -19,7 +19,6 @@ function CreateAccountRoute() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signUpFormFields);
   };
 
   const handleChange = (event) => {
@@ -78,7 +77,7 @@ function CreateAccountRoute() {
 
             <button className={'mt-10 button__primary'}>Create an account</button>
 
-            <p className={'input-note--signup'}>
+            <p className={'input-note--signin'}>
               Joined us before?{' '}
               <Link to={'../login'}>
                 <span>Login here.</span>
@@ -91,4 +90,4 @@ function CreateAccountRoute() {
   );
 }
 
-export default CreateAccountRoute;
+export default CreateAccountRouter;
