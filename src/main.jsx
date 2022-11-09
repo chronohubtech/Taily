@@ -5,8 +5,7 @@ import './global.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Routes
-import CreateAccount from '@routes/create-account/create-account.route.jsx';
-import LoginAccount from '@routes/login/login.route.jsx';
+import CreateAccount from '@routes/create-account/create-account.router.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,10 +15,6 @@ const router = createBrowserRouter([
   {
     path: '/create-account',
     element: <CreateAccount />
-  },
-  {
-    path: '/login',
-    element: <LoginAccount />
   }
 ]);
 
