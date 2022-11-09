@@ -49,7 +49,7 @@ function CreateAccountRouter() {
             <InputField
               label={'Password'}
               type="password"
-              placeholder={'Your pet`s secret'}
+              placeholder={'Your dog`s secret'}
               onChange={handleChange}
               name={'password'}
               value={password}
@@ -62,9 +62,9 @@ function CreateAccountRouter() {
             </p>
 
             <InputField
-              label={'What is your pet`s name?'}
+              label={'What is your dog’s name?'}
               type="text"
-              placeholder={'Ex: Parrot'}
+              placeholder={'Ex: Shamsey'}
               onChange={handleChange}
               name={'dogsName'}
               value={dogsName}
