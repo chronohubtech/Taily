@@ -38,6 +38,10 @@
   @apply flex items-center relative cursor-pointer;
 }
 
+.signin__checkbox p {
+  @apply ml-7;
+}
+
 .signin__checkbox input {
   @apply absolute opacity-0 cursor-pointer h-0 w-0;
 }

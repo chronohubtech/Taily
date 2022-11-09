@@ -60,7 +60,7 @@ function LoginAccountRoute() {
             <label
               htmlFor="remember-auth"
               className="signin__checkbox text-dark-1 mb-[5px] block font-medium text-sm">
-              <p className={'ml-7'}>Remember me (Your login information)</p>
+              <p>Remember me (Your login information)</p>
               <input type="checkbox" name="remember-auth" id={'remember-auth'} />
               <span className="checkbox"></span>
             </label>
