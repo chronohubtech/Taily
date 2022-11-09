@@ -19,13 +19,13 @@
 }
 
 .signup__form .input-note {
-  @apply text-xs text-dark-1/50 font-medium;
+  @apply text-xs text-dark-1/75 font-medium;
 }
 
-.signup__form .input-note--signin {
+.signup__form .input-note--signup {
   @apply text-sm text-dark-1 font-medium text-center;
 }
 
-.signup__form .input-note--signin span {
+.signup__form .input-note--signup span {
   @apply text-primary;
 }
