@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import './input-field.style.css';
 
+function PasswordVisibilityToggle(props) {
+  return (
+    <button
+      onClick={props.onClick}
+      className={'password-toggle'}
+      title={props.passwordVisible ? 'Show password' : 'Hide password'}>
+      {props.passwordVisible ? '🔓' : '🔒'}
+    </button>
+  );
+}
+
 export function InputField({ label, ...otherProps }) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -27,12 +38,10 @@ export function InputField({ label, ...otherProps }) {
       />
 
       {isInputTypePassword && (
-        <button
+        <PasswordVisibilityToggle
           onClick={passwordVisibility}
-          className={'password-toggle'}
-          title={isPasswordVisible ? 'Show password' : 'Hide password'}>
-          {isPasswordVisible ? '🔓' : '🔒'}
-        </button>
+          passwordVisible={isPasswordVisible}
+        />
       )}
     </div>
   );
