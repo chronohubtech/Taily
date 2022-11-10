@@ -6,6 +6,7 @@ import { InputField } from '@components/input-field/input-field.component.jsx';
 // Static assets
 import './login.style.css';
 import HorizontalLogo from '@assets/static/horizonal-logo.svg';
+import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
 
 function LoginAccountRoute() {
   const defaultSignInField = {
@@ -49,7 +50,7 @@ function LoginAccountRoute() {
             <InputField
               label={'Password'}
               type="password"
-              placeholder={'Your pet`s secret'}
+              placeholder={`Your pet's secret`}
               onChange={handleChange}
               name={'password'}
               value={password}
@@ -57,15 +58,13 @@ function LoginAccountRoute() {
               required
             />
 
-            <label
-              htmlFor="remember-auth"
-              className="signin__checkbox text-dark-1 mb-[5px] block font-medium text-sm">
+            <label htmlFor="remember-auth" className="signin__checkbox">
               <p>Remember me (Your login information)</p>
               <input type="checkbox" name="remember-auth" id={'remember-auth'} />
               <span className="checkbox"></span>
             </label>
 
-            <button className={'mt-10 button__primary'}>Sign In</button>
+            <ButtonPrimary title={'Sign in'} className={'mt-10'} />
 
             <p className={'input-note--signin'}>
               Not in the club yet?{' '}

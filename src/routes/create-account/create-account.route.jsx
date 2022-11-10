@@ -1,25 +1,38 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
+import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
+import { SuccessModal } from '@components/success-modal/success-modal.component.jsx';
 // Static assets
 import './create-account.style.css';
 import HorizontalLogo from '@assets/static/horizonal-logo.svg';
 
 function CreateAccountRoute() {
+  // React router navigate
+  const navigate = useNavigate();
+
   const defaultSignUpField = {
     username: '',
     password: '',
-    dogsName: ''
+    petsName: ''
   };
 
   const [signUpFormFields, setSignUpFormFields] = useState(defaultSignUpField);
-  const { username, password, dogsName } = signUpFormFields;
+  const { username, password, petsName } = signUpFormFields;
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signUpFormFields);
+
+    // Disable body scroll
+    document.body.style.overflow = 'hidden';
+    // Show modal
+    setIsModalVisible(true);
+    // Clear form fields
+    setSignUpFormFields(defaultSignUpField);
   };
 
   const handleChange = (event) => {
@@ -30,6 +43,16 @@ function CreateAccountRoute() {
 
   return (
     <>
+      <SuccessModal
+        isVisible={isModalVisible}
+        title={'Welcome to the club!'}
+        message={'Thank you for joining us, let’s fuel your productivity.'}
+        buttonTitle={'Continue'}
+        onClick={() => {
+          navigate('/login');
+        }}
+      />
+
       <section className={'signup__section'}>
         <div className={'signup__container'}>
           <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
@@ -50,7 +73,7 @@ function CreateAccountRoute() {
             <InputField
               label={'Password'}
               type="password"
-              placeholder={'Your pet`s secret'}
+              placeholder={`Your pet's secret`}
               onChange={handleChange}
               name={'password'}
               value={password}
@@ -63,12 +86,12 @@ function CreateAccountRoute() {
             </p>
 
             <InputField
-              label={'What is your pet`s name?'}
+              label={`What is your pet's name?`}
               type="text"
               placeholder={'Ex: Parrot'}
               onChange={handleChange}
-              name={'dogsName'}
-              value={dogsName}
+              name={'petsName'}
+              value={petsName}
               required
             />
 
@@ -76,7 +99,7 @@ function CreateAccountRoute() {
               This is a security question for your account recovery.
             </p>
 
-            <button className={'mt-10 button__primary'}>Create an account</button>
+            <ButtonPrimary title={'Create an account'} className={'mt-7'} />
 
             <p className={'input-note--signup'}>
               Joined us before?{' '}
