@@ -50,7 +50,7 @@ function CreateAccountRoute() {
             <InputField
               label={'Password'}
               type="password"
-              placeholder={'Your pet`s secret'}
+              placeholder={`Your pet's secret`}
               onChange={handleChange}
               name={'password'}
               value={password}
@@ -63,7 +63,7 @@ function CreateAccountRoute() {
             </p>
 
             <InputField
-              label={'What is your pet`s name?'}
+              label={`What is your pet's name?`}
               type="text"
               placeholder={'Ex: Parrot'}
               onChange={handleChange}

@@ -39,7 +39,7 @@
 }
 
 .signin__checkbox p {
-  @apply ml-7;
+  @apply ml-7 text-dark-1 mb-[5px] block font-medium text-sm;
 }
 
 .signin__checkbox input {

@@ -49,7 +49,7 @@ function LoginAccountRoute() {
             <InputField
               label={'Password'}
               type="password"
-              placeholder={'Your pet`s secret'}
+              placeholder={`Your pet's secret`}
               onChange={handleChange}
               name={'password'}
               value={password}
@@ -57,9 +57,7 @@ function LoginAccountRoute() {
               required
             />
 
-            <label
-              htmlFor="remember-auth"
-              className="signin__checkbox text-dark-1 mb-[5px] block font-medium text-sm">
+            <label htmlFor="remember-auth" className="signin__checkbox">
               <p>Remember me (Your login information)</p>
               <input type="checkbox" name="remember-auth" id={'remember-auth'} />
               <span className="checkbox"></span>
