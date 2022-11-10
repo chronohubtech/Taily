@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
@@ -26,7 +27,6 @@ function CreateAccountRoute() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Disable body scroll
     document.body.style.overflow = 'hidden';
     // Show modal
@@ -45,8 +45,8 @@ function CreateAccountRoute() {
     <>
       <SuccessModal
         isVisible={isModalVisible}
-        title={'Welcome to the club!'}
-        message={'Thank you for joining us, let’s fuel your productivity.'}
+        title={'Account Created'}
+        message={`You have successfully created an account!`}
         buttonTitle={'Continue'}
         onClick={() => {
           navigate('/login');
@@ -54,7 +54,11 @@ function CreateAccountRoute() {
       />
 
       <section className={'signup__section'}>
-        <div className={'signup__container'}>
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className={'signup__container'}>
           <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
 
           <h4 className={'signup__header'}>Create an account</h4>
@@ -95,10 +99,6 @@ function CreateAccountRoute() {
               required
             />
 
-            <p className={'input-note mb-4'}>
-              This is a security question for your account recovery.
-            </p>
-
             <ButtonPrimary title={'Create an account'} className={'mt-7'} />
 
             <p className={'input-note--signup'}>
@@ -108,7 +108,7 @@ function CreateAccountRoute() {
               </Link>
             </p>
           </form>
-        </div>
+        </motion.div>
       </section>
     </>
   );
