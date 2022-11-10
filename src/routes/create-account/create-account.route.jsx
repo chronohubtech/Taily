@@ -26,7 +26,6 @@ function CreateAccountRoute() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Disable body scroll
     document.body.style.overflow = 'hidden';
     // Show modal
@@ -45,8 +44,8 @@ function CreateAccountRoute() {
     <>
       <SuccessModal
         isVisible={isModalVisible}
-        title={'Welcome to the club!'}
-        message={'Thank you for joining us, let’s fuel your productivity.'}
+        title={'Account Created'}
+        message={`You have successfully created an account!`}
         buttonTitle={'Continue'}
         onClick={() => {
           navigate('/login');
