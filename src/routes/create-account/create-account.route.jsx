@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
+import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
+import { SuccessModal } from '@components/success-modal/success-modal.component.jsx';
 // Static assets
 import './create-account.style.css';
 import HorizontalLogo from '@assets/static/horizonal-logo.svg';
 
 function CreateAccountRoute() {
+  // React router navigate
+  const navigate = useNavigate();
+
   const defaultSignUpField = {
     username: '',
     password: '',
@@ -17,9 +22,13 @@ function CreateAccountRoute() {
   const [signUpFormFields, setSignUpFormFields] = useState(defaultSignUpField);
   const { username, password, petsName } = signUpFormFields;
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signUpFormFields);
+
+    // Show modal
+    setIsModalVisible(true);
   };
 
   const handleChange = (event) => {
@@ -30,6 +39,17 @@ function CreateAccountRoute() {
 
   return (
     <>
+      {isModalVisible && (
+        <SuccessModal
+          title={'Welcome to the club!'}
+          message={'Thank you for joining us, let’s fuel your productivity.'}
+          buttonTitle={'Continue'}
+          onClick={() => {
+            navigate('/login');
+          }}
+        />
+      )}
+
       <section className={'signup__section'}>
         <div className={'signup__container'}>
           <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
@@ -76,7 +96,7 @@ function CreateAccountRoute() {
               This is a security question for your account recovery.
             </p>
 
-            <button className={'mt-10 button__primary'}>Create an account</button>
+            <ButtonPrimary title={'Create an account'} className={'mt-7'} />
 
             <p className={'input-note--signup'}>
               Joined us before?{' '}

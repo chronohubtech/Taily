@@ -1,0 +1,23 @@
+.modal__overlay {
+  @apply fixed top-0 left-0 h-screen w-full bg-black/30 backdrop-blur-sm block z-50 flex items-center justify-center;
+}
+
+.modal__container {
+  @apply max-w-[356px] w-full min-h-[204px] bg-white rounded-[12px] block relative p-4;
+}
+
+.modal__image {
+  @apply absolute max-w-[90px] w-[90px] aspect-square rounded-full flex items-center justify-center bg-secondary left-1/2 -translate-x-1/2 -top-[40px];
+}
+
+.modal__content {
+  @apply mx-auto mt-[55px] block text-center;
+}
+
+.modal__content h3 {
+  @apply font-bold text-[26px] text-dark-1;
+}
+
+.modal__content p {
+  @apply font-medium text-dark-2 text-sm;
+}
