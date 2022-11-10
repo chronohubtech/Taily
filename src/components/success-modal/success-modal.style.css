@@ -1,5 +1,5 @@
 .modal__overlay {
-  @apply fixed top-0 left-0 h-screen w-full bg-black/30 backdrop-blur-sm block z-50 flex items-center justify-center;
+  @apply fixed top-0 left-0 h-screen w-full bg-black/30  block z-50 flex items-center justify-center;
 }
 
 .modal__container {

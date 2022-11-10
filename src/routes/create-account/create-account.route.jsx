@@ -27,8 +27,12 @@ function CreateAccountRoute() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Disable body scroll
+    document.body.style.overflow = 'hidden';
     // Show modal
     setIsModalVisible(true);
+    // Clear form fields
+    setSignUpFormFields(defaultSignUpField);
   };
 
   const handleChange = (event) => {
@@ -39,16 +43,15 @@ function CreateAccountRoute() {
 
   return (
     <>
-      {isModalVisible && (
-        <SuccessModal
-          title={'Welcome to the club!'}
-          message={'Thank you for joining us, let’s fuel your productivity.'}
-          buttonTitle={'Continue'}
-          onClick={() => {
-            navigate('/login');
-          }}
-        />
-      )}
+      <SuccessModal
+        isVisible={isModalVisible}
+        title={'Welcome to the club!'}
+        message={'Thank you for joining us, let’s fuel your productivity.'}
+        buttonTitle={'Continue'}
+        onClick={() => {
+          navigate('/login');
+        }}
+      />
 
       <section className={'signup__section'}>
         <div className={'signup__container'}>
