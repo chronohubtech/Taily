@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
@@ -37,7 +38,11 @@ function LoginAccountRoute() {
   return (
     <>
       <section className={'signin__section'}>
-        <div className={'signin__container'}>
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className={'signin__container'}>
           <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
 
           <h4 className={'signin__header'}>Sign in</h4>
@@ -79,7 +84,7 @@ function LoginAccountRoute() {
               </Link>
             </p>
           </form>
-        </div>
+        </motion.div>
       </section>
     </>
   );
