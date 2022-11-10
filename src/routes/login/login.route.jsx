@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -9,6 +9,12 @@ import HorizontalLogo from '@assets/static/horizonal-logo.svg';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
 
 function LoginAccountRoute() {
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   const defaultSignInField = {
     username: '',
     password: ''
