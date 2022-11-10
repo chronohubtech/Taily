@@ -11,11 +11,11 @@ function CreateAccountRoute() {
   const defaultSignUpField = {
     username: '',
     password: '',
-    dogsName: ''
+    petsName: ''
   };
 
   const [signUpFormFields, setSignUpFormFields] = useState(defaultSignUpField);
-  const { username, password, dogsName } = signUpFormFields;
+  const { username, password, petsName } = signUpFormFields;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,8 +67,8 @@ function CreateAccountRoute() {
               type="text"
               placeholder={'Ex: Parrot'}
               onChange={handleChange}
-              name={'dogsName'}
-              value={dogsName}
+              name={'petsName'}
+              value={petsName}
               required
             />
 
