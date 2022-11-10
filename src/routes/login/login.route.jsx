@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { InputField } from '@components/input-field/input-field.component.jsx';
 // Static assets
 import './login.style.css';
-import HorizontalLogo from '@assets/static/horizonal-logo.svg';
+import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
 
 function LoginAccountRoute() {
@@ -43,7 +43,14 @@ function LoginAccountRoute() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
           className={'signin__container'}>
-          <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
+          <img
+            src={HorizontalLogo}
+            width={180}
+            height={71}
+            alt="Taily horizontal logo"
+            decoding={'async'}
+            loading={'lazy'}
+          />
 
           <h4 className={'signin__header'}>Sign in</h4>
 
