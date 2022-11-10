@@ -12,7 +12,14 @@ function Root() {
 
   return (
     <main className={'flex items-center justify-center h-screen'}>
-      <img src={VerticalLogo} width={181} height={241} alt="Taily vertical logo" />
+      <img
+        src={VerticalLogo}
+        width={181}
+        height={241}
+        alt="Taily vertical logo"
+        decoding={'sync'}
+        loading={'eager'}
+      />
     </main>
   );
 }

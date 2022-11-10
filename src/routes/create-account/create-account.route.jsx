@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -8,9 +8,13 @@ import { ButtonPrimary } from '@components/button-primary/button-primary.compone
 import { SuccessModal } from '@components/success-modal/success-modal.component.jsx';
 // Static assets
 import './create-account.style.css';
-import HorizontalLogo from '@assets/static/horizonal-logo.svg';
+import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 
 function CreateAccountRoute() {
+  useEffect(() => {
+    document.title = 'Create Account - Taily';
+  }, []);
+
   // React router navigate
   const navigate = useNavigate();
 
@@ -59,7 +63,14 @@ function CreateAccountRoute() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
           className={'signup__container'}>
-          <img src={HorizontalLogo} width={180} height={71} alt="Taily horizontal logo" />
+          <img
+            src={HorizontalLogo}
+            width={180}
+            height={71}
+            alt="Taily horizontal logo"
+            decoding={'async'}
+            loading={'lazy'}
+          />
 
           <h4 className={'signup__header'}>Create an account</h4>
 
