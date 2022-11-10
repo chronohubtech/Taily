@@ -6,6 +6,7 @@ import { InputField } from '@components/input-field/input-field.component.jsx';
 // Static assets
 import './login.style.css';
 import HorizontalLogo from '@assets/static/horizonal-logo.svg';
+import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
 
 function LoginAccountRoute() {
   const defaultSignInField = {
@@ -63,7 +64,7 @@ function LoginAccountRoute() {
               <span className="checkbox"></span>
             </label>
 
-            <button className={'mt-10 button__primary'}>Sign In</button>
+            <ButtonPrimary title={'Sign in'} className={'mt-10'} />
 
             <p className={'input-note--signin'}>
               Not in the club yet?{' '}
