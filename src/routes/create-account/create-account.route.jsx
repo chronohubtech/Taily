@@ -94,10 +94,6 @@ function CreateAccountRoute() {
               required
             />
 
-            <p className={'input-note mb-4'}>
-              This is a security question for your account recovery.
-            </p>
-
             <ButtonPrimary title={'Create an account'} className={'mt-7'} />
 
             <p className={'input-note--signup'}>

@@ -65,7 +65,7 @@ function LoginAccountRoute() {
             />
 
             <label htmlFor="remember-auth" className="signin__checkbox">
-              <p>Remember me (Your login information)</p>
+              <p>Remember me</p>
               <input type="checkbox" name="remember-auth" id={'remember-auth'} />
               <span className="checkbox"></span>
             </label>
