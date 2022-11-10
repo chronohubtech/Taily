@@ -13,6 +13,7 @@ function LoginAccountRoute() {
   useEffect(() => {
     return () => {
       document.body.style.overflow = 'auto';
+      document.title = 'Login Account - Taily';
     };
   }, []);
 
