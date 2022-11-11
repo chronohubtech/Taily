@@ -5,9 +5,10 @@ import { motion } from 'framer-motion';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
-import { SuccessModal } from '@components/success-modal/success-modal.component.jsx';
+import { GenericModal } from '@components/generic-modal/generic-modal.component.jsx';
 // Static assets
 import './create-account.style.css';
+import PartyPopper from '@assets/static/party-popper.png';
 import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 
 function CreateAccountRoute() {
@@ -47,7 +48,8 @@ function CreateAccountRoute() {
 
   return (
     <>
-      <SuccessModal
+      <GenericModal
+        image={PartyPopper}
         isVisible={isModalVisible}
         title={'Account Created'}
         message={`You have successfully created an account!`}

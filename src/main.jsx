@@ -8,11 +8,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Routes
 import CreateAccount from '@routes/create-account/create-account.route.jsx';
 import LoginAccount from '@routes/login/login.route.jsx';
+import Home from '@routes/home/home.route.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />
+  },
+  {
+    path: '/home',
+    element: <Home />
   },
   {
     path: '/create-account',
