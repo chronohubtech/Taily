@@ -53,6 +53,7 @@ function CreateAccountRoute() {
         message={`You have successfully created an account!`}
         buttonTitle={'Continue'}
         onClick={() => {
+          document.body.style.overflow = 'auto';
           navigate('/login');
         }}
       />

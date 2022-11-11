@@ -11,10 +11,8 @@ import { ButtonPrimary } from '@components/button-primary/button-primary.compone
 
 function LoginAccountRoute() {
   useEffect(() => {
-    return () => {
-      document.body.style.overflow = 'auto';
-      document.title = 'Login Account - Taily';
-    };
+    document.body.style.overflow = 'auto';
+    document.title = 'Login Account - Taily';
   }, []);
 
   const defaultSignInField = {
