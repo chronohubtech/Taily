@@ -21,3 +21,7 @@
 .home__title p {
   @apply text-sm font-medium text-dark-1 -mt-1;
 }
+
+.home__menu-button {
+  @apply hover:brightness-90 w-[42px] aspect-square block bg-primary/30 flex items-center justify-center rounded-[12px];
+}

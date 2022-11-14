@@ -20,10 +20,7 @@ function HomeRoute() {
               <p>Tuesday, November 8</p>
             </div>
 
-            <button
-              className={
-                'hover:brightness-90 w-[42px] aspect-square block bg-primary/30 flex items-center justify-center rounded-[12px]'
-              }>
+            <button className={'home__menu-button'}>
               <img src={MenuIcon} width={24} height={24} decoding={'async'} alt="Menu icon" />
             </button>
           </div>
