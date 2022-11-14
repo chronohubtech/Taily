@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
 import './home.style.css';
+// Components
+import { ProgressBar } from '@components/progress-bar/progress-bar.component.jsx';
 // Static assets
-import MenuIcon from '@assets/icons/menu-icon.svg';
-
 import TailyPet from '@assets/pets/taily-pet-1.png';
 import TailyPetTreat from '@assets/pets/taily-pet-bone-1.png';
+import MenuIcon from '@assets/icons/menu-icon.svg';
 
 function HomeRoute() {
   return (
@@ -28,30 +28,7 @@ function HomeRoute() {
             </button>
           </div>
 
-          <div className={'h-[77px] w-full my-4 flex items-center justify-center relative'}>
-            <img
-              src={TailyPet}
-              style={{ left: '67%' }}
-              className={'absolute w-[63px] h-[77px] block transition-all duration-500'}
-              decoding={'async'}
-              loading={'lazy'}
-              alt="Taily pet"
-            />
-
-            <div className={'h-[15px] w-full bg-[#FFDCDB] block rounded-full overflow-hidden'}>
-              <span
-                className={'transition-all duration-500 h-[15px] bg-[#A1DCD6] block rounded-full'}
-                style={{ width: '70%' }}></span>
-            </div>
-
-            <img
-              src={TailyPetTreat}
-              className={'absolute right-0 w-[50px] aspect-square block'}
-              decoding={'async'}
-              loading={'lazy'}
-              alt="Taily pet treats"
-            />
-          </div>
+          <ProgressBar taskProgress={5} petImage={TailyPet} petTreat={TailyPetTreat} />
         </motion.div>
       </section>
     </div>
