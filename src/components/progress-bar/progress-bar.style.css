@@ -1,0 +1,19 @@
+.progress__container {
+  @apply h-[77px] w-full my-4 flex items-center justify-center relative;
+}
+
+.progress__pet {
+  @apply absolute w-[63px] h-[77px] block transition-all duration-500 z-10;
+}
+
+.progress__bar {
+  @apply mr-[54px] h-[15px] w-full bg-[#FFDCDB] block rounded-full overflow-hidden;
+}
+
+.progress__treat {
+  @apply absolute right-0 w-[50px] aspect-square block;
+}
+
+.progress {
+  @apply transition-all duration-500 h-[15px] bg-[#A1DCD6] block rounded-full;
+}

@@ -1,0 +1,27 @@
+.home__section {
+  @apply flex items-start justify-center h-screen w-full min-h-[600px];
+}
+
+.home__container {
+  @apply max-w-[476px] w-full block mx-auto px-4 mt-[33px] pb-10;
+}
+
+.home__header {
+  @apply flex items-start w-full justify-between;
+}
+
+.home__title {
+  @apply block;
+}
+
+.home__title h3 {
+  @apply font-bold text-[36px] text-primary -mt-3;
+}
+
+.home__title p {
+  @apply text-sm font-medium text-dark-1 -mt-1;
+}
+
+.home__menu-button {
+  @apply hover:brightness-90 w-[42px] aspect-square block bg-primary/30 flex items-center justify-center rounded-[12px];
+}
