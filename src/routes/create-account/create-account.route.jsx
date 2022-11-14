@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+import { createUserAccount } from '@/utils/firebase/firebase.utils.js';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
@@ -32,12 +33,15 @@ function CreateAccountRoute() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const { username, password } = signUpFormFields;
     // Disable body scroll
     document.body.style.overflow = 'hidden';
     // Show modal
     setIsModalVisible(true);
     // Clear form fields
     setSignUpFormFields(defaultSignUpField);
+    // Firebase Auth - email placeholder atm.
+    createUserAccount(username + '@kurono.com', password).then((r) => console.log(r));
   };
 
   const handleChange = (event) => {
