@@ -15,7 +15,7 @@
 }
 
 .home__title h3 {
-  @apply font-bold text-[36px] text-primary;
+  @apply font-bold text-[36px] text-primary -mt-3;
 }
 
 .home__title p {
