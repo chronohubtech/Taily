@@ -21,19 +21,19 @@ function CreateAccountRoute() {
   const navigate = useNavigate();
 
   const defaultSignUpField = {
+    email: '',
     username: '',
-    password: '',
-    petsName: ''
+    password: ''
   };
 
   const [signUpFormFields, setSignUpFormFields] = useState(defaultSignUpField);
-  const { username, password, petsName } = signUpFormFields;
+  const { email, username, password } = signUpFormFields;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { username, password } = signUpFormFields;
+    const { email, username, password } = signUpFormFields;
     // Disable body scroll
     document.body.style.overflow = 'hidden';
     // Show modal
@@ -41,7 +41,7 @@ function CreateAccountRoute() {
     // Clear form fields
     setSignUpFormFields(defaultSignUpField);
     // Firebase Auth - email placeholder atm.
-    createUserAccount(username + '@kurono.com', password).then((r) => console.log(r));
+    createUserAccount(email, password).then((r) => console.log(r));
   };
 
   const handleChange = (event) => {
@@ -83,9 +83,19 @@ function CreateAccountRoute() {
 
           <form action="" className={'signup__form'} onSubmit={handleSubmit}>
             <InputField
+              label={'Email'}
+              type="email"
+              placeholder={'parrot@taily.app'}
+              onChange={handleChange}
+              name={'email'}
+              value={email}
+              required
+            />
+
+            <InputField
               label={'Username'}
               type="text"
-              placeholder={'tailydo'}
+              placeholder={'parrot'}
               onChange={handleChange}
               name={'username'}
               value={username}
@@ -99,21 +109,6 @@ function CreateAccountRoute() {
               onChange={handleChange}
               name={'password'}
               value={password}
-              required
-            />
-
-            <p className={'input-note mb-4'}>
-              Please remember your password because we will not be able to change it due to
-              encryption of your data.
-            </p>
-
-            <InputField
-              label={`What is your pet's name?`}
-              type="text"
-              placeholder={'Ex: Parrot'}
-              onChange={handleChange}
-              name={'petsName'}
-              value={petsName}
               required
             />
 
