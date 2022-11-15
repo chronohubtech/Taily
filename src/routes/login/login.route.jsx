@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// Context
-import { UserContext } from '@/contexts/user.context.jsx';
 // Utils
 import {
   createUserDocument,
@@ -55,43 +53,36 @@ function LoginAccountRoute() {
     setIsModalVisible(false);
   };
 
-  const { setCurrentUser } = useContext(UserContext);
-
   // Sign in with Google account
   const signInWithGoogleAccount = async (event) => {
     event.preventDefault();
 
-    const { user } = await signInWithGoogle();
-    await createUserDocument(user);
+    await signInWithGoogle();
   };
 
   // Sign in with Form (Email and Password)
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    signInUserAccount(email, password)
-      .then((user) => {
-        setCurrentUser(user);
-      })
-      .catch((error) => {
-        switch (error.code) {
-          case 'auth/wrong-password':
-            modalMessage({
-              image: Warning,
-              title: 'Invalid Login',
-              message: 'Please input the correct email and password'
-            });
-            break;
+    signInUserAccount(email, password).catch((error) => {
+      switch (error.code) {
+        case 'auth/wrong-password':
+          modalMessage({
+            image: Warning,
+            title: 'Invalid Login',
+            message: 'Please input the correct email and password'
+          });
+          break;
 
-          case 'auth/user-not-found':
-            modalMessage({
-              image: Warning,
-              title: 'Account Not Found',
-              message: `Sorry, we don't know this account`
-            });
-            break;
-        }
-      });
+        case 'auth/user-not-found':
+          modalMessage({
+            image: Warning,
+            title: 'Account Not Found',
+            message: `Sorry, we don't know this account`
+          });
+          break;
+      }
+    });
   };
 
   const handleChange = (event) => {

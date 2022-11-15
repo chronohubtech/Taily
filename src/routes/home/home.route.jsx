@@ -4,15 +4,13 @@ import './home.style.css';
 // Components
 import { ProgressBar } from '@components/progress-bar/progress-bar.component.jsx';
 import { signOutUser } from '@/utils/firebase/firebase.utils.js';
-import { UserContext } from '@/contexts/user.context.jsx';
+
 // Static assets
 import TailyPet from '@assets/pets/taily-pet-1.png';
 import TailyPetTreat from '@assets/pets/taily-pet-bone-1.png';
 import MenuIcon from '@assets/icons/menu-icon.svg';
 
 function HomeRoute() {
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
   return (
     <div>
       <section className={'home__section'}>
