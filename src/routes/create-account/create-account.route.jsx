@@ -11,6 +11,7 @@ import { GenericModal } from '@components/generic-modal/generic-modal.component.
 import './create-account.style.css';
 import PartyPopper from '@assets/static/party-popper.png';
 import HorizontalLogo from '@assets/static/horizontal-logo.svg';
+import GoogleIcon from '@assets/icons/google-icon.svg';
 
 function CreateAccountRoute() {
   useEffect(() => {
@@ -113,6 +114,12 @@ function CreateAccountRoute() {
             />
 
             <ButtonPrimary title={'Create an account'} className={'mt-7'} />
+            <p className={'input-note--signup !my-1'}>OR</p>
+            <ButtonPrimary
+              icon={GoogleIcon}
+              title={'Sign up with Google'}
+              className={'button__primary--white button__primary--icon'}
+            />
 
             <p className={'input-note--signup'}>
               Joined us before?{' '}

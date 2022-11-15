@@ -1,3 +1,11 @@
 .button__primary {
   @apply hover:brightness-95 transition-all text-white font-semibold text-base px-[16px] py-[8px] bg-primary text-center rounded-[12px] block w-full;
 }
+
+.button__primary--white {
+  @apply bg-white text-dark-1;
+}
+
+.button__primary--icon {
+  @apply flex items-center justify-center gap-4 border border-black/10;
+}
