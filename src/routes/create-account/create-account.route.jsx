@@ -43,6 +43,19 @@ function CreateAccountRoute() {
     buttonTitle: 'Continue'
   });
 
+  const modalMessage = (messageData) => {
+    setModalData({
+      ...modalData,
+      ...messageData
+    });
+    setIsModalVisible(true);
+  };
+
+  const hideModal = () => {
+    document.body.style.overflow = 'auto';
+    navigate('/login');
+  };
+
   const signUpWithGoogleAccount = async (event) => {
     event.preventDefault();
 
@@ -51,13 +64,10 @@ function CreateAccountRoute() {
     const { user } = response;
 
     if (!isNewUser) {
-      setModalData({
-        ...modalData,
+      modalMessage({
         title: 'Account already exists',
         message: 'You already have an account please continue.'
       });
-
-      setIsModalVisible(true);
     }
 
     await createUserDocument(user).then(() => {
@@ -70,14 +80,11 @@ function CreateAccountRoute() {
 
     isEmailAlreadyExist(email).then((isNotExisting) => {
       if (!isNotExisting) {
-        setModalData({
-          ...modalData,
+        modalMessage({
           image: Warning,
           title: 'Account already created',
           message: 'This email is already in our database.'
         });
-
-        setIsModalVisible(true);
       }
 
       createUserAccount(email, password)
@@ -88,10 +95,9 @@ function CreateAccountRoute() {
             setSignUpFormFields({ ...signUpFormFields, email: '' });
           });
         })
-        .catch(({ code }) => {
-          if (code === 'auth/email-already-in-use') {
-            setModalData({
-              ...modalData,
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            modalMessage({
               image: Warning,
               title: 'Email already exists',
               message: 'This email already have an account please continue to login.'
@@ -113,14 +119,7 @@ function CreateAccountRoute() {
 
   return (
     <>
-      <GenericModal
-        {...modalData}
-        isVisible={isModalVisible}
-        onClick={() => {
-          document.body.style.overflow = 'auto';
-          navigate('/login');
-        }}
-      />
+      <GenericModal {...modalData} isVisible={isModalVisible} onClick={hideModal} />
 
       <section className={'signup__section'}>
         <motion.div
