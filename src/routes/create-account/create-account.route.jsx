@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
-import { createUserAccount } from '@/utils/firebase/firebase.utils.js';
+// Utils
+import { createUserAccount, signInWithGoogle } from '@/utils/firebase/firebase.utils.js';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
@@ -116,6 +116,7 @@ function CreateAccountRoute() {
             <ButtonPrimary title={'Create an account'} className={'mt-7'} />
             <p className={'input-note--signup !my-1'}>OR</p>
             <ButtonPrimary
+              onClick={signInWithGoogle}
               icon={GoogleIcon}
               title={'Sign up with Google'}
               className={'button__primary--white button__primary--icon'}
