@@ -70,3 +70,7 @@
 .signin__checkbox .checkbox:after {
   @apply left-1/2 top-[49%] w-[5px] h-[10px] border-white -translate-x-1/2 -translate-y-1/2 rotate-[45deg] border-t-0 border-r-[3px] border-b-[3px] border-l-0;
 }
+
+.signin__form .input-note--signin {
+  @apply text-sm text-dark-1 font-medium text-center;
+}

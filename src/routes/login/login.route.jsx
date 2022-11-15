@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
+// utils
+import {
+  createUserDocument,
+  signInUserAccount,
+  signInWithGoogle
+} from '@/utils/firebase/firebase.utils.js';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
+import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
+import { GenericModal } from '@components/generic-modal/generic-modal.component.jsx';
 // Static assets
 import './login.style.css';
 import HorizontalLogo from '@assets/static/horizontal-logo.svg';
-import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
+import Warning from '@assets/static/warning.png';
+import GoogleIcon from '@assets/icons/google-icon.svg';
+import PartyPopper from '@assets/static/party-popper.png';
 
 function LoginAccountRoute() {
   useEffect(() => {
@@ -16,16 +25,64 @@ function LoginAccountRoute() {
   }, []);
 
   const defaultSignInField = {
-    username: '',
+    email: '',
     password: ''
   };
 
   const [signInFormFields, setSignInFormFields] = useState(defaultSignInField);
-  const { username, password } = signInFormFields;
+  const { email, password } = signInFormFields;
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalData, setModalData] = useState({
+    image: PartyPopper,
+    title: 'Account Created',
+    message: 'You have successfully created an account!',
+    buttonTitle: 'Continue'
+  });
+
+  const modalMessage = (messageData) => {
+    setModalData({
+      ...modalData,
+      ...messageData
+    });
+    setIsModalVisible(true);
+  };
+
+  const hideModal = () => {
+    document.body.style.overflow = 'auto';
+    setIsModalVisible(false);
+  };
+
+  const signInWithGoogleAccount = async (event) => {
+    event.preventDefault();
+
+    const { user } = await signInWithGoogle();
+    await createUserDocument(user);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signInFormFields);
+    signInUserAccount(email, password)
+      .then((r) => console.log(r))
+      .catch((error) => {
+        switch (error.code) {
+          case 'auth/wrong-password':
+            modalMessage({
+              image: Warning,
+              title: 'Invalid Login',
+              message: 'Please input the correct email and password'
+            });
+            break;
+
+          case 'auth/user-not-found':
+            modalMessage({
+              image: Warning,
+              title: 'Account Not Found',
+              message: `Sorry, we don't know this account`
+            });
+            break;
+        }
+      });
   };
 
   const handleChange = (event) => {
@@ -36,6 +93,8 @@ function LoginAccountRoute() {
 
   return (
     <>
+      <GenericModal {...modalData} isVisible={isModalVisible} onClick={hideModal} />
+
       <section className={'signin__section'}>
         <motion.div
           initial={{ y: 10, opacity: 0 }}
@@ -55,12 +114,12 @@ function LoginAccountRoute() {
 
           <form action="" className={'signin__form'} onSubmit={handleSubmit}>
             <InputField
-              label={'Username'}
-              type="text"
-              placeholder={'tailydo'}
+              label={'Email'}
+              type="email"
+              placeholder={'parrot@gmail.com'}
               onChange={handleChange}
-              name={'username'}
-              value={username}
+              name={'email'}
+              value={email}
               required
             />
 
@@ -82,6 +141,15 @@ function LoginAccountRoute() {
             </label>
 
             <ButtonPrimary title={'Sign in'} className={'mt-10'} />
+
+            <p className={'input-note--signin !my-1'}>OR</p>
+
+            <ButtonPrimary
+              onClick={signInWithGoogleAccount}
+              icon={GoogleIcon}
+              title={'Sign in with Google'}
+              className={'button__primary--white button__primary--icon'}
+            />
 
             <p className={'input-note--signin'}>
               Not in the club yet?{' '}
