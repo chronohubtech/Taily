@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Utils
-import { createUserAccount, signInWithGoogle } from '@/utils/firebase/firebase.utils.js';
+import { getAdditionalUserInfo } from 'firebase/auth';
+import {
+  createUserAccount,
+  signInWithGoogle,
+  createUserDocument,
+  isEmailAlreadyExist
+} from '@/utils/firebase/firebase.utils.js';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
@@ -10,6 +16,7 @@ import { GenericModal } from '@components/generic-modal/generic-modal.component.
 // Static assets
 import './create-account.style.css';
 import PartyPopper from '@assets/static/party-popper.png';
+import Warning from '@assets/static/warning.png';
 import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 import GoogleIcon from '@assets/icons/google-icon.svg';
 
@@ -18,9 +25,7 @@ function CreateAccountRoute() {
     document.title = 'Create Account - Taily';
   }, []);
 
-  // React router navigate
   const navigate = useNavigate();
-
   const defaultSignUpField = {
     email: '',
     username: '',
@@ -31,34 +36,86 @@ function CreateAccountRoute() {
   const { email, username, password } = signUpFormFields;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalData, setModalData] = useState({
+    image: PartyPopper,
+    title: 'Account Created',
+    message: 'You have successfully created an account!',
+    buttonTitle: 'Continue'
+  });
+
+  const signUpWithGoogleAccount = async (event) => {
+    event.preventDefault();
+
+    const response = await signInWithGoogle();
+    const { isNewUser } = getAdditionalUserInfo(response);
+    const { user } = response;
+
+    if (!isNewUser) {
+      setModalData({
+        ...modalData,
+        title: 'Account already exists',
+        message: 'You already have an account please continue.'
+      });
+
+      setIsModalVisible(true);
+    }
+
+    await createUserDocument(user).then(() => {
+      setIsModalVisible(true);
+    });
+  };
+
+  const signUpWithEmailAndPassword = () => {
+    const { email, username, password } = signUpFormFields;
+
+    isEmailAlreadyExist(email).then((isNotExisting) => {
+      if (!isNotExisting) {
+        setModalData({
+          ...modalData,
+          image: Warning,
+          title: 'Account already created',
+          message: 'This email is already in our database.'
+        });
+
+        setIsModalVisible(true);
+      }
+
+      createUserAccount(email, password)
+        .then(({ user }) => {
+          createUserDocument(user, username).then(() => {
+            document.body.style.overflow = 'hidden';
+            setIsModalVisible(true);
+            setSignUpFormFields({ ...signUpFormFields, email: '' });
+          });
+        })
+        .catch(({ code }) => {
+          if (code === 'auth/email-already-in-use') {
+            setModalData({
+              ...modalData,
+              image: Warning,
+              title: 'Email already exists',
+              message: 'This email already have an account please continue to login.'
+            });
+          }
+        });
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { email, username, password } = signUpFormFields;
-    // Disable body scroll
-    document.body.style.overflow = 'hidden';
-    // Show modal
-    setIsModalVisible(true);
-    // Clear form fields
-    setSignUpFormFields(defaultSignUpField);
-    // Firebase Auth - email placeholder atm.
-    createUserAccount(email, password).then((r) => console.log(r));
+    signUpWithEmailAndPassword();
   };
 
-  const handleChange = (event) => {
+  const handleInputFormChange = (event) => {
     const { name, value } = event.target;
-
     setSignUpFormFields({ ...signUpFormFields, [name]: value });
   };
 
   return (
     <>
       <GenericModal
-        image={PartyPopper}
+        {...modalData}
         isVisible={isModalVisible}
-        title={'Account Created'}
-        message={`You have successfully created an account!`}
-        buttonTitle={'Continue'}
         onClick={() => {
           document.body.style.overflow = 'auto';
           navigate('/login');
@@ -87,7 +144,7 @@ function CreateAccountRoute() {
               label={'Email'}
               type="email"
               placeholder={'parrot@taily.app'}
-              onChange={handleChange}
+              onChange={handleInputFormChange}
               name={'email'}
               value={email}
               required
@@ -97,9 +154,10 @@ function CreateAccountRoute() {
               label={'Username'}
               type="text"
               placeholder={'parrot'}
-              onChange={handleChange}
+              onChange={handleInputFormChange}
               name={'username'}
               value={username}
+              minLength={4}
               required
             />
 
@@ -107,16 +165,19 @@ function CreateAccountRoute() {
               label={'Password'}
               type="password"
               placeholder={`Your pet's secret`}
-              onChange={handleChange}
+              onChange={handleInputFormChange}
               name={'password'}
               value={password}
+              minLength={12}
               required
             />
 
             <ButtonPrimary title={'Create an account'} className={'mt-7'} />
+
             <p className={'input-note--signup !my-1'}>OR</p>
+
             <ButtonPrimary
-              onClick={signInWithGoogle}
+              onClick={signUpWithGoogleAccount}
               icon={GoogleIcon}
               title={'Sign up with Google'}
               className={'button__primary--white button__primary--icon'}

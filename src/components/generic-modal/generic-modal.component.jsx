@@ -17,7 +17,7 @@ export function GenericModal({ image, title, buttonTitle, message, isVisible, ..
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.2, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.4 }}
             className={'modal__container'}>
             <div className={'modal__image'}>
               <img src={image} width={49} height={49} alt="Party popper" />
