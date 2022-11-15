@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Root from './Root.jsx';
 
-import './styles/global.css';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// Contexts
+import { AuthProvider } from '@/contexts/user.context.jsx';
+// Static asset
+import './styles/global.css';
 // Routes
 import CreateAccount from '@routes/create-account/create-account.route.jsx';
 import LoginAccount from '@routes/login/login.route.jsx';
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

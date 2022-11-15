@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// utils
+// Context
+import { UserContext } from '@/contexts/user.context.jsx';
+// Utils
 import {
   createUserDocument,
   signInUserAccount,
@@ -53,6 +55,9 @@ function LoginAccountRoute() {
     setIsModalVisible(false);
   };
 
+  const { setCurrentUser } = useContext(UserContext);
+
+  // Sign in with Google account
   const signInWithGoogleAccount = async (event) => {
     event.preventDefault();
 
@@ -60,10 +65,14 @@ function LoginAccountRoute() {
     await createUserDocument(user);
   };
 
+  // Sign in with Form (Email and Password)
   const handleSubmit = (event) => {
     event.preventDefault();
+
     signInUserAccount(email, password)
-      .then((r) => console.log(r))
+      .then((user) => {
+        setCurrentUser(user);
+      })
       .catch((error) => {
         switch (error.code) {
           case 'auth/wrong-password':
