@@ -9,7 +9,7 @@ import { ButtonPrimary } from '@components/button-primary/button-primary.compone
 import { GenericModal } from '@components/generic-modal/generic-modal.component.jsx';
 // Static assets
 import './login.style.css';
-import HorizontalLogo from '@assets/static/horizontal-logo.svg';
+// import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 import Warning from '@assets/static/warning.png';
 import GoogleIcon from '@assets/icons/google-icon.svg';
 import PartyPopper from '@assets/static/party-popper.png';
@@ -105,9 +105,9 @@ function LoginAccountRoute() {
           transition={{ duration: 0.3 }}
           className={'signin__container'}>
           <img
-            src={HorizontalLogo}
-            width={180}
-            height={71}
+            src={'https://taily.b-cdn.net/taily-horizontal-logo.svg'}
+            width={243}
+            height={93}
             alt="Taily horizontal logo"
             decoding={'async'}
             loading={'lazy'}

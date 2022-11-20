@@ -3,7 +3,7 @@
 }
 
 .progress__pet {
-  @apply absolute w-[63px] h-[77px] block transition-all duration-500 z-10;
+  @apply absolute w-[80px] h-[80px] aspect-square block transition-all duration-500 z-10;
 }
 
 .progress__bar {

@@ -30,7 +30,11 @@ function HomeRoute() {
             </button>
           </div>
 
-          <ProgressBar taskProgress={5} petImage={TailyPet} petTreat={TailyPetTreat} />
+          <ProgressBar
+            taskProgress={5}
+            petImage={'https://taily.b-cdn.net/taily-pet.svg'}
+            petTreat={TailyPetTreat}
+          />
         </motion.div>
       </section>
     </div>

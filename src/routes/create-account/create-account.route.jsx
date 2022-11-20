@@ -135,9 +135,9 @@ function CreateAccountRoute() {
           transition={{ duration: 0.3 }}
           className={'signup__container'}>
           <img
-            src={HorizontalLogo}
-            width={180}
-            height={71}
+            src={'https://taily.b-cdn.net/taily-horizontal-logo.svg'}
+            width={243}
+            height={93}
             alt="Taily horizontal logo"
             decoding={'async'}
             loading={'lazy'}
