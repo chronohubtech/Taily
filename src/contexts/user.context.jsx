@@ -4,17 +4,17 @@ import { createUserDocument, onAuthStateChangedListener } from '@/utils/firebase
 export const UserContext = createContext({ setCurrentUser: () => null, currentUser: null });
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const value = { currentUser, setCurrentUser };
+  const [currentUserAuth, setCurrentUserAuth] = useState(null);
+  const value = { currentUser: currentUserAuth, setCurrentUser: setCurrentUserAuth };
 
   useEffect(() => {
     return onAuthStateChangedListener((user) => {
+      console.log(user);
       if (user) {
-        createUserDocument(user);
+        createUserDocument(user).catch((error) => console.log(error));
       }
 
-      setCurrentUser(user);
-      console.log(user);
+      setCurrentUserAuth(user);
     });
   }, []);
 
