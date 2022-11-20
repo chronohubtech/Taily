@@ -35,7 +35,7 @@ provider.setCustomParameters({
 export const isEmailAlreadyExist = async (email) => {
   if (!email) return;
   return await fetchSignInMethodsForEmail(auth, email).then((response) => {
-    return response.length === 0;
+    return response.length !== 0;
   });
 };
 

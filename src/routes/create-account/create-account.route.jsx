@@ -78,8 +78,8 @@ function CreateAccountRoute() {
   const signUpWithEmailAndPassword = () => {
     const { email, username, password } = signUpFormFields;
 
-    isEmailAlreadyExist(email).then((isNotExisting) => {
-      if (!isNotExisting) {
+    isEmailAlreadyExist(email).then((isExisting) => {
+      if (isExisting) {
         modalMessage({
           image: Warning,
           title: 'Account already created',
