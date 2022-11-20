@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { createUserDocument, onAuthStateChangedListener } from '@/utils/firebase/firebase.utils.js';
+import PropTypes from 'prop-types';
 
 export const UserContext = createContext({ currentUserAuth: null, setCurrentUserAuth: () => null });
 
@@ -18,4 +19,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
