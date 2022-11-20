@@ -11,6 +11,7 @@ import './styles/global.css';
 import CreateAccount from '@routes/create-account/create-account.route.jsx';
 import LoginAccount from '@routes/login/login.route.jsx';
 import Home from '@routes/home/home.route.jsx';
+import ProtectedRoute from '@routes/private-route/private-route.route.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,9 +19,15 @@ const router = createBrowserRouter([
     element: <Root />
   },
   {
-    path: '/home',
-    element: <Home />
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: '/home',
+        element: <Home />
+      }
+    ]
   },
+
   {
     path: '/create-account',
     element: <CreateAccount />

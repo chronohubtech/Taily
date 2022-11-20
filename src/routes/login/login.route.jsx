@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Utils
-import {
-  createUserDocument,
-  signInUserAccount,
-  signInWithGoogle
-} from '@/utils/firebase/firebase.utils.js';
+import { signInUserAccount, signInWithGoogle } from '@/utils/firebase/firebase.utils.js';
 // Components
 import { InputField } from '@components/input-field/input-field.component.jsx';
 import { ButtonPrimary } from '@components/button-primary/button-primary.component.jsx';
@@ -17,6 +13,8 @@ import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 import Warning from '@assets/static/warning.png';
 import GoogleIcon from '@assets/icons/google-icon.svg';
 import PartyPopper from '@assets/static/party-popper.png';
+// Contexts
+import { UserContext } from '@/contexts/user.context.jsx';
 
 function LoginAccountRoute() {
   useEffect(() => {
@@ -91,7 +89,12 @@ function LoginAccountRoute() {
     setSignInFormFields({ ...signInFormFields, [name]: value });
   };
 
-  return (
+  const { currentUserAuth } = useContext(UserContext);
+  const isUserLoggedIn = currentUserAuth !== null;
+
+  return isUserLoggedIn ? (
+    <Navigate to={'/home'} replace />
+  ) : (
     <>
       <GenericModal {...modalData} isVisible={isModalVisible} onClick={hideModal} />
 

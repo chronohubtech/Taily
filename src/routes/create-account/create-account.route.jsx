@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Utils
 import { getAdditionalUserInfo } from 'firebase/auth';
@@ -19,6 +19,8 @@ import PartyPopper from '@assets/static/party-popper.png';
 import Warning from '@assets/static/warning.png';
 import HorizontalLogo from '@assets/static/horizontal-logo.svg';
 import GoogleIcon from '@assets/icons/google-icon.svg';
+// Context
+import { UserContext } from '@/contexts/user.context.jsx';
 
 function CreateAccountRoute() {
   useEffect(() => {
@@ -117,7 +119,12 @@ function CreateAccountRoute() {
     setSignUpFormFields({ ...signUpFormFields, [name]: value });
   };
 
-  return (
+  const { currentUserAuth } = useContext(UserContext);
+  const isUserLoggedIn = currentUserAuth !== null;
+
+  return isUserLoggedIn ? (
+    <Navigate to={'/home'} replace />
+  ) : (
     <>
       <GenericModal {...modalData} isVisible={isModalVisible} onClick={hideModal} />
 
