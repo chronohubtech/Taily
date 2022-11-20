@@ -7,7 +7,7 @@ function Root() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => navigate('create-account'), 2000);
+    setTimeout(() => navigate('login'), 2000);
   }, []);
 
   return (
