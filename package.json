@@ -19,7 +19,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json,html}' --config ./.prettierrc"
   },
   "dependencies": {
-    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react": "^7.32.2",
     "framer-motion": "^7.6.5",
     "html-minifier": "^4.0.0",
     "react": "^18.2.0",
